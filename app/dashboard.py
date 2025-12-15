@@ -3,7 +3,11 @@ import pandas as pd
 import ast
 import os
 
-from main import run_pipeline  # ✅ IMPORTANT
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.append(PROJECT_ROOT)
+
+from main import run_pipeline# ✅ IMPORTANT
 
 # -------------------------------
 # Load Data
