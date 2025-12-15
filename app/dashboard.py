@@ -3,6 +3,8 @@ import pandas as pd
 import ast
 import os
 
+from main import run_pipeline  # ✅ IMPORTANT
+
 # -------------------------------
 # Load Data
 # -------------------------------
@@ -10,12 +12,16 @@ import os
 def load_data():
     data_path = "data/final/risk_results.csv"
 
-    # If file doesn't exist, run pipeline
+    # Ensure directory exists
+    os.makedirs("data/final", exist_ok=True)
+
+    # If file doesn't exist, run pipeline safely
     if not os.path.exists(data_path):
         st.warning("Risk data not found. Running ML pipeline...")
-        os.system("python main.py")
+        run_pipeline()
 
     return pd.read_csv(data_path)
+
 
 df = load_data()
 
