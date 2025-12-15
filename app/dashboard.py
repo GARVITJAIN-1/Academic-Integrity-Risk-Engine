@@ -7,7 +7,14 @@ import ast
 # -------------------------------
 @st.cache_data
 def load_data():
-    return pd.read_csv("data/final/risk_results.csv")
+    data_path = "data/final/risk_results.csv"
+
+    # If file doesn't exist, run pipeline
+    if not os.path.exists(data_path):
+        st.warning("Risk data not found. Running ML pipeline...")
+        os.system("python main.py")
+
+    return pd.read_csv(data_path)
 
 df = load_data()
 
