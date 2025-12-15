@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import ast
 import os
+import sys
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if PROJECT_ROOT not in sys.path:
